@@ -1,0 +1,66 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto; /* Allow height to adjust based on content */
+}
+
+.logo-container img {
+    width: 150px; /* Set a fixed width for better control */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure the image scales down within container */
+}
+
+.custom-shape-divider-top-1721573097 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1721573097 svg {
+    position: relative;
+    display: block;
+    width: calc(108% + 1.3px);
+    height: 174px;
+}
+
+.custom-shape-divider-top-1721573097 .shape-fill {
+    fill: #FFFFFF;
+}
+
+
+/* Media Queries for responsiveness */
+
+/* Tablet and small devices (landscape and portrait) */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; /* Stack elements vertically */
+        margin: 50px auto; /* Reduce margin */
+        padding: 0 10px; /* Reduce horizontal padding */
+    }
+
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    .header {
+        margin: 20px auto; /* Further reduce margin */
+        padding: 0 5px; /* Further reduce horizontal padding */
+    }
+
+
+
+}

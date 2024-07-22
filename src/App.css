@@ -1,0 +1,16 @@
+.container {
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 10%;
+}
+
+
+
+/* Media queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 0; /
+  }
+}
