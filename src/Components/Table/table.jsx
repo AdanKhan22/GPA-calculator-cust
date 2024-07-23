@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from "../Buttons/button";
-import Display from "../Display/display";
 import { validateForm } from "../formhandler.js";
 import "./table.css";
 
@@ -40,14 +39,11 @@ export default function Table() {
     for (let i = 0; i < rows.length; i++) {
       individualGradePoints[i] = rows[i].creditHours * rows[i].grade;
     }
-    console.log("GP PINTS", individualGradePoints);
-
     //Calculate Total Grade Points
 
     for (let i = 0; i < rows.length; i++) {
       totalGradePoints += individualGradePoints[i];
     }
-    console.log("TOTAL PINTS", totalGradePoints);
 
     //Calculate Total Credit Hours
 
@@ -56,19 +52,15 @@ export default function Table() {
       totalCreditHours += currentCreditHours;
     }
 
-    console.log("Total Credit Hours:", totalCreditHours);
-
     //Calculate GPA
     GPA = totalGradePoints / totalCreditHours;
-    setDisplayGPA(GPA);
-    console.log("GPA", GPA);
+    setDisplayGPA(GPA.toFixed(2));
   };
 
   const handleGradeChange = (index, event) => {
     const handleGrade = [...rows];
     handleGrade[index].grade = event.target.value;
     setGrade(handleGrade);
-    console.log(handleGrade);
   };
 
   return (
@@ -86,6 +78,7 @@ export default function Table() {
             <tr key={index}>
               <td>
                 <input
+                  className="input-fields-text"
                   type="text"
                   name="course"
                   placeholder="Course Name"
@@ -99,7 +92,10 @@ export default function Table() {
               </td>
               <td>
                 <input
-                  type="text"
+                  className="input-fields-number"
+                  type="number"
+                  min="0"
+                  max="10"
                   name="creditHours"
                   placeholder="Credit Hours"
                   value={row.creditHours}
@@ -137,9 +133,16 @@ export default function Table() {
       <div className="controls">
         <Button onClick={addRow} text="Add" />
         <Button onClick={handleSumbit} text="Calculate" />
-        <Button text="Reset" />
+        <Button
+          text="Reset"
+          onClick={() => {
+            setRows([{ course: "", creditHours: "", grade: "" }]);
+          }}
+        />
       </div>
-      <Display text={displayGPA}></Display>
+      <h3>
+        Your GPA is <b>{displayGPA}</b>
+      </h3>
     </div>
   );
 }

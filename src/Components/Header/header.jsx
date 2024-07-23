@@ -20,7 +20,7 @@ export default function header() {
       </div>
       <div className="logo-container">
         <img src={logo} alt="LOGO"></img>
-        <h2>GPA Calculator</h2>
+        <h1>GPA Calculator</h1>
       </div>
     </div>
   );

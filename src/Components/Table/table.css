@@ -6,83 +6,86 @@ body {
 .table {
     display: flex;
     flex-direction: column;
-    margin: 0 auto; /* Center the table container */
-    width: 80%; /* Adjust the width of the table container */
+    margin: 0 auto; 
+    width: 80%;
 }
 
 table {
     width: 100%;
     border-collapse: separate; 
     border-spacing: 10px; 
-    border: 1px solid #ddd; /* Border around the table */
+    border: 1px solid #ddd; 
 }
 
-select{
+select {
     width: 100%;
-    border-collapse: separate; 
-    border-spacing: 10px; 
-    border: 1px solid #ddd; /* Border around the table */
-    
+    border: 1px solid #ddd; 
 }
 
 th, td {
-    padding: 10px; /* Padding inside table cells */
-    border: 1px solid #ddd; /* Border around cells */
-    text-align: left; /* Align text to the left */
+    
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    text-align: left; 
 }
 
+
+
 thead {
-    background-color: #f4f4f4; /* Background color for table header */
+    background-color: #f4f4f4; 
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9; /* Background color for even rows */
+    background-color: #f9f9f9; 
 }
 
 tr:hover {
-    background-color: #f1f1f1; /* Background color for row hover */
+    background-color: #f1f1f1; 
 }
 
-form {
-    margin: 0; /* Remove default margins */
-    display: flex; /* Use flexbox for form layout */
-    gap: 10px; /* Add space between form elements */
+.input-fields-number , .input-fields-text{
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; 
 }
 
-input[type="text"] {
-    padding: 5px; /* Padding inside the input field */
-    font-size: 16px; /* Adjust font size */
-    border: 1px solid #ddd; /* Border around input */
-    border-radius: 4px; /* Rounded corners for input */
-    width: 100%; /* Full width of the table cell */
+.input-fields-text {
+    width: 100%; 
 }
 
-input[type="submit"] {
-    padding: 5px 10px; /* Padding inside the button */
-    font-size: 16px; /* Adjust font size */
-    border: 1px solid #ddd; /* Border around button */
-    border-radius: 4px; /* Rounded corners for button */
-    background-color: #007bff; /* Button background color */
-    color: white; /* Text color */
-    cursor: pointer; /* Pointer cursor on hover */
+.input-fields-number {
+
+    width: 85%;
 }
 
-input[type="submit"]:hover {
-    background-color: #0056b3; /* Darker background color on hover */
+.input-fields [type="submit"] {
+    padding: 5px 10px; 
+    font-size: 16px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    background-color: #007bff;
+    color: white; 
+    cursor: pointer;
 }
 
-.controls{
+.input-fields [type="submit"]:hover {
+    background-color: #0056b3; 
+}
+
+.controls {
     display: flex;
     justify-content: center;
     flex-direction: row;
     align-items: center;
-    gap :20px;
+    gap: 20px;
     padding: 10px;
-    margin :10px
+    margin: 10px;
 }
 
 @media (max-width: 768px) {
-    .table{
+    .table {
         width: 100%;
     }
 }

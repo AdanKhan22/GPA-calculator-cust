@@ -6,6 +6,7 @@ export default function goalCGPA() {
   const [targetGPA, setTargetGPA] = useState("");
   const [currentCredits, setCurrentCredits] = useState("");
   const [additionalCredits, setAdditionalCredits] = useState("");
+  const [futureGPA, setfutureGPA] = useState("");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -30,71 +31,88 @@ export default function goalCGPA() {
   };
 
   const calculateCGPA = () => {
-    // console.log("Cuurent Gpa", currentGPA);
-    // console.log("Cuurent Gpa", targetGPA);
-    // console.log("Cuurent Gpa", currentCredits);
-    // console.log("Cuurent Gpa", additionalCredits);
-
-    // Parse input values to ensure they are numbers
     const currentGPAFloat = parseFloat(currentGPA) || 0;
     const targetGPAFloat = parseFloat(targetGPA) || 0;
     const currentCreditsFloat = parseFloat(currentCredits) || 0;
     const additionalCreditsFloat = parseFloat(additionalCredits) || 0;
 
-    // Calculate the numerator and denominator
     const numerator =
       targetGPAFloat * (currentCreditsFloat + additionalCreditsFloat) -
       currentGPAFloat * currentCreditsFloat;
     const futureGPA = numerator / additionalCreditsFloat;
-
-    console.log("Needed GPA for next semester:", futureGPA.toFixed(2));
+    const futureGPAFloat = parseFloat(futureGPA.toFixed(2));
+    setfutureGPA(futureGPAFloat);
   };
 
   return (
-    <>
-      <h2>GPA Planning Calculator</h2>
-      <p>
-        The calculator can be used to determine the minimum GPA required in
-        future courses to raise GPA to a desired level or maintain the GPA above
-        a certain level.
-      </p>
-      {/* Add "type" in each input tag equal to numbers or
-      something */}
-      <div>
-        <ul>
-          Current GPA{" "}
-          <input
-            name="currentGPA"
-            value={currentGPA}
-            onChange={handleInputChange}
-          ></input>
-        </ul>
-        <ul>
-          Target GPA{" "}
-          <input
-            name="targetGPA"
-            value={targetGPA}
-            onChange={handleInputChange}
-          ></input>
-        </ul>
-        <ul>
-          Current Credits
-          <input
-            name="currentCredits"
-            value={currentCredits}
-            onChange={handleInputChange}
-          ></input>
-        </ul>
-        <ul>
-          Additional Credits
-          <input
-            name="additionalCredits"
-            value={additionalCredits}
-            onChange={handleInputChange}
-          ></input>
-        </ul>
+    <section>
+      <div className="section2-text">
+        <h1>GPA Planning Calculator</h1>
+        <p>
+          The calculator can be used to determine the minimum GPA required in
+          future courses to raise GPA to a desired level or maintain the GPA
+          above a certain level.
+        </p>
       </div>
-      <Button text="Calculate" onClick={calculateCGPA}></Button>
-    </>
+
+      <div className="list-options">
+        <ul>
+          <li className="input-group">
+            <label htmlFor="currentGPA">Current GPA</label>
+            <input
+              id="currentGPA"
+              name="currentGPA"
+              type="number"
+              min="0"
+              className="input-field"
+              value={currentGPA}
+              onChange={handleInputChange}
+            />
+          </li>
+          <li className="input-group">
+            <label htmlFor="targetGPA">Target GPA</label>
+            <input
+              id="targetGPA"
+              name="targetGPA"
+              type="number"
+              min="0"
+              className="input-field"
+              value={targetGPA}
+              onChange={handleInputChange}
+            />
+          </li>
+          <li className="input-group">
+            <label htmlFor="currentCredits">Current Credits</label>
+            <input
+              id="currentCredits"
+              name="currentCredits"
+              type="number"
+              min="0"
+              className="input-field"
+              value={currentCredits}
+              onChange={handleInputChange}
+            />
+          </li>
+          <li className="input-group">
+            <label htmlFor="additionalCredits">Additional Credits</label>
+            <input
+              id="additionalCredits"
+              name="additionalCredits"
+              type="number"
+              min="0"
+              className="input-field"
+              value={additionalCredits}
+              onChange={handleInputChange}
+            />
+          </li>
+        </ul>
+        <Button text="Calculate" onClick={calculateCGPA}></Button>
+        <div className="displayGGPA">
+          <h3>
+            Your Goal GPA is <b>{futureGPA}</b>
+          </h3>
+        </div>
+      </div>
+    </section>
   );
 }
