@@ -5,6 +5,7 @@ import "./table.css";
 
 export default function Table() {
   let GPA = 0;
+
   let inputValue = [];
   // State to hold the table rows
   const [rows, setRows] = useState([
@@ -12,11 +13,19 @@ export default function Table() {
     { course: "", creditHours: "", grade: "" },
     { course: "", creditHours: "", grade: "" },
   ]);
-
   const [displayGPA, setDisplayGPA] = useState();
-
+  const [displayCredits, setdisplayCredits] = useState(0);
   const [grade, setGrade] = useState();
-  // Function to add a new row
+
+  // window.onload = function () {
+  //   let cachedValues = [];
+
+  //   rows.map((row) => {});
+  //   cachedValues = localStorage.getItem("creditHours"); //Key as parameter
+
+  //   console.log(cachedValues);
+  // };
+
   const addRow = () => {
     setRows([...rows, { course: "", creditHours: "", grade: "" }]);
   };
@@ -55,7 +64,15 @@ export default function Table() {
     //Calculate GPA
     GPA = totalGradePoints / totalCreditHours;
     setDisplayGPA(GPA.toFixed(2));
+    setdisplayCredits(totalCreditHours);
   };
+
+  // const cacheInput = (e) => {
+  //   let cachedInput = [];
+  //   cachedInput.push(e.target.name, e.target.value);
+  //   // localStorage.setItem(e.target.name, e.target.value);
+  //   console.log(cachedInput);
+  // };
 
   const handleGradeChange = (index, event) => {
     const handleGrade = [...rows];
@@ -98,6 +115,7 @@ export default function Table() {
                   max="10"
                   name="creditHours"
                   placeholder="Credit Hours"
+                  // onInput={cacheInput}
                   value={row.creditHours}
                   onChange={(e) => {
                     const updatedRows = [...rows];
@@ -111,6 +129,7 @@ export default function Table() {
                 <select
                   value={row.grade}
                   onChange={(e) => handleGradeChange(index, e)}
+                  // onInput={cacheInput}
                 >
                   <option value="0.0">N</option>
                   <option value="4.0">A</option>
@@ -140,8 +159,13 @@ export default function Table() {
           }}
         />
       </div>
+
       <h3>
-        Your GPA is <b>{displayGPA}</b>
+        Total Credits <b className="GPA-display-credits">{displayCredits}</b>
+      </h3>
+
+      <h3>
+        Your GPA is <b className="GPA-display-number">{displayGPA}</b>
       </h3>
     </div>
   );

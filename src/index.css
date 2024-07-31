@@ -1,8 +1,15 @@
 h1{
-    color:#03045e;   
+    color:#03045e;  
+
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+   
 }
 
-
+body{
+ 
+}
 
 /* A css reset file
 

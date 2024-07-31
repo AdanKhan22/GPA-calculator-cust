@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./goalCGPA.css";
 import Button from "../Buttons/button";
+import { validateForm } from "../formhandler.js";
+
 export default function goalCGPA() {
   const [currentGPA, setCurrentGPA] = useState("");
   const [targetGPA, setTargetGPA] = useState("");
@@ -31,17 +33,28 @@ export default function goalCGPA() {
   };
 
   const calculateCGPA = () => {
-    const currentGPAFloat = parseFloat(currentGPA) || 0;
-    const targetGPAFloat = parseFloat(targetGPA) || 0;
-    const currentCreditsFloat = parseFloat(currentCredits) || 0;
-    const additionalCreditsFloat = parseFloat(additionalCredits) || 0;
+    const checkForm = [
+      currentGPA,
+      targetGPA,
+      currentCredits,
+      additionalCredits,
+    ];
 
-    const numerator =
-      targetGPAFloat * (currentCreditsFloat + additionalCreditsFloat) -
-      currentGPAFloat * currentCreditsFloat;
-    const futureGPA = numerator / additionalCreditsFloat;
-    const futureGPAFloat = parseFloat(futureGPA.toFixed(2));
-    setfutureGPA(futureGPAFloat);
+    if (validateForm(null, checkForm)) {
+      const currentGPAFloat = parseFloat(currentGPA) || 0;
+      const targetGPAFloat = parseFloat(targetGPA) || 0;
+      const currentCreditsFloat = parseFloat(currentCredits) || 0;
+      const additionalCreditsFloat = parseFloat(additionalCredits) || 0;
+
+      const numerator =
+        targetGPAFloat * (currentCreditsFloat + additionalCreditsFloat) -
+        currentGPAFloat * currentCreditsFloat;
+      const futureGPA = numerator / additionalCreditsFloat;
+      const futureGPAFloat = parseFloat(futureGPA.toFixed(2));
+      setfutureGPA(futureGPAFloat);
+    } else {
+      alert("Fill out all forms");
+    }
   };
 
   return (
@@ -109,7 +122,7 @@ export default function goalCGPA() {
         <Button text="Calculate" onClick={calculateCGPA}></Button>
         <div className="displayGGPA">
           <h3>
-            Your Goal GPA is <b>{futureGPA}</b>
+            Your Goal GPA is <b className="GPA-display-number">{futureGPA}</b>
           </h3>
         </div>
       </div>
