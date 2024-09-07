@@ -60,10 +60,10 @@ export default function goalCGPA() {
   return (
     <section>
       <div className="section2-text">
-        <h1>GPA Planning Calculator</h1>
+        <h1>CGPA Planning Calculator</h1>
         <p>
           The calculator can be used to determine the minimum GPA required in
-          future courses to raise GPA to a desired level or maintain the GPA
+          future courses to raise CGPA to a desired level or maintain the CGPA
           above a certain level.
         </p>
       </div>
@@ -71,7 +71,7 @@ export default function goalCGPA() {
       <div className="list-options">
         <ul>
           <li className="input-group">
-            <label htmlFor="currentGPA">Current GPA</label>
+            <label htmlFor="currentGPA">Current CGPA</label>
             <input
               id="currentGPA"
               name="currentGPA"
@@ -83,7 +83,7 @@ export default function goalCGPA() {
             />
           </li>
           <li className="input-group">
-            <label htmlFor="targetGPA">Target GPA</label>
+            <label htmlFor="targetGPA">Target CGPA</label>
             <input
               id="targetGPA"
               name="targetGPA"
@@ -95,7 +95,7 @@ export default function goalCGPA() {
             />
           </li>
           <li className="input-group">
-            <label htmlFor="currentCredits">Current Credits</label>
+            <label htmlFor="currentCredits">Current Total Credit Hours</label>
             <input
               id="currentCredits"
               name="currentCredits"
@@ -107,7 +107,7 @@ export default function goalCGPA() {
             />
           </li>
           <li className="input-group">
-            <label htmlFor="additionalCredits">Additional Credits</label>
+            <label htmlFor="additionalCredits">Additional Credit Hours</label>
             <input
               id="additionalCredits"
               name="additionalCredits"

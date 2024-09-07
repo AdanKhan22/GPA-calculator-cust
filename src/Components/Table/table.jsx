@@ -165,7 +165,7 @@ export default function Table() {
       </h3>
 
       <h3>
-        Your GPA is <b className="GPA-display-number">{displayGPA}</b>
+        Your CGPA is <b className="GPA-display-number">{displayGPA}</b>
       </h3>
     </div>
   );
